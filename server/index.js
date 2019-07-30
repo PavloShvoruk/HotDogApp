@@ -9,6 +9,7 @@ connectDB();
 
 //Middlewares
 app.use(cors());
+app.use(express.json({ extended: false }));
 
 const hotDogs = require("./routes/hotDogs");
 app.use("/api/hotDogs", hotDogs);
