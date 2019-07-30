@@ -6,9 +6,15 @@ const HotDog = require("../models/HotDog");
 
 //GET: api/hotDogs
 router.get("/", (req, res) => {
-  res.send("hello");
+  HotDog.find()
+    .then(hotDogs => res.json(hotDogs))
+    .catch(err => {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    });
 });
 
+//POST: api/hotDogs/create
 router.post("/create", (req, res) => {
   HotDog.findOne({ name: req.body.name }).then(hotDog => {
     if (hotDog) {
