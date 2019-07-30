@@ -14,6 +14,26 @@ router.get("/", (req, res) => {
     });
 });
 
+//GET: api/hotDogs/:id
+router.get("/:id", (req, res) => {
+  HotDog.findById(req.params.id)
+    .then(hotDog => res.json({ hotDog }))
+    .catch(err => {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    });
+});
+
+//DELETE: api/hotDogs/:id
+router.delete("/:id", (req, res) => {
+  HotDog.findById(req.params.id).then(hotDog => {
+    hotDog
+      .remove()
+      .then(() => res.json({ msg: true }))
+      .catch(() => res.status(500).json({ msg: "Unable to delete hot dog" }));
+  });
+});
+
 //POST: api/hotDogs/create
 router.post("/create", (req, res) => {
   HotDog.findOne({ name: req.body.name }).then(hotDog => {
