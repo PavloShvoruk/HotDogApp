@@ -5,7 +5,7 @@ const router = express.Router();
 const HotDog = require("../models/HotDog");
 
 //GET: api/hotDogs
-router.get("/", (req, res) => {
+router.get("/", res => {
   HotDog.find()
     .then(hotDogs => res.json(hotDogs))
     .catch(err => {
@@ -54,6 +54,19 @@ router.post("/create", (req, res) => {
         .catch(err => console.log(err));
     }
   });
+});
+
+//PUT api/hotDogs/:id
+router.put("/:id", (req, res) => {
+  HotDog.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, hotdog) => {
+      if (err) return res.status(500).send(err);
+      return res.json(hotdog);
+    }
+  );
 });
 
 module.exports = router;
