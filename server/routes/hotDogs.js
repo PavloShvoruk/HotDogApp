@@ -5,7 +5,7 @@ const router = express.Router();
 const HotDog = require("../models/HotDog");
 
 //GET: api/hotDogs
-router.get("/", res => {
+router.get("/", (req, res) => {
   HotDog.find()
     .then(hotDogs => res.json(hotDogs))
     .catch(err => {
@@ -40,7 +40,7 @@ router.post("/create", (req, res) => {
     if (hotDog) {
       return res
         .status(400)
-        .json({ name: "Hot dog with such name already exists" });
+        .json({ msg: "Hot dog with such name already exists" });
     } else {
       const newHotDog = new HotDog({
         name: req.body.name,
