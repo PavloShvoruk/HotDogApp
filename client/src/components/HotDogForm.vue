@@ -4,7 +4,7 @@
       <v-alert v-model="alertBool" :type="type">{{ alertMsg }}</v-alert>
       <v-form ref="form">
         <v-text-field v-model="name" :rules="nameRules" :counter="50" label="Name" required></v-text-field>
-        <v-text-field v-model="price" label="Price"></v-text-field>
+        <v-text-field v-model="price" type="number" min="0" label="Price"></v-text-field>
 
         <v-text-field
           v-model="description"
