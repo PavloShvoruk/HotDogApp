@@ -4,17 +4,17 @@
 
 ## Quick start
 
-#Install dependencies for server
+# Install dependencies for server
 npm install
 
-#Install dependencies for client
+# Install dependencies for client
 cd client
 npm install
 
-#Run Express server
+# Run Express server
 npm run dev
 
-#Run Vue client
+# Run Vue client
 npm run serve
 
 You should create a key_dev.js in the server config filder with:
