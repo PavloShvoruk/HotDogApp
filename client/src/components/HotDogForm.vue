@@ -4,7 +4,14 @@
       <v-alert v-model="alertBool" :type="type">{{ alertMsg }}</v-alert>
       <v-form ref="form">
         <v-text-field v-model="name" :rules="nameRules" :counter="50" label="Name" required></v-text-field>
-        <v-text-field v-model="price" type="number" min="0" label="Price"></v-text-field>
+        <v-text-field
+          v-model="price"
+          type="number"
+          min="0"
+          label="Price"
+          :rules="priceRules"
+          required
+        ></v-text-field>
 
         <v-text-field
           v-model="description"
@@ -48,7 +55,10 @@ export default {
           "Description must be less than 250 characters"
       ],
       price: "",
-
+      priceRules: [
+        v => !!v || "Price is required",
+        v => (v && v == 0) || "Price must be higher than 0"
+      ],
       imageRules: [
         value =>
           !value ||

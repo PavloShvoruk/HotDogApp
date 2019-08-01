@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const config = require("./key_dev");
+const config = require("./keys");
 const db = config.mongoURI;
 
 const connectDB = async () => {
@@ -10,7 +10,7 @@ const connectDB = async () => {
       useFindAndModify: false
     });
 
-    console.log("MongoDB Connected...");
+    // console.log("MongoDB Connected...");
   } catch (err) {
     console.error(err.message);
     // Exit processs
