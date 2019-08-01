@@ -28,6 +28,9 @@ app.use(express.json({ extended: false }));
 //     storage: storage
 // }).single('');
 
+const hotDogs = require("./routes/hotDogs");
+app.use("/api/hotDogs", hotDogs);
+
 //Handle prod
 if (process.env.NODE_ENV === "production") {
   //Static folder
@@ -35,9 +38,6 @@ if (process.env.NODE_ENV === "production") {
   //Handle SPA
   app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
 }
-
-const hotDogs = require("./routes/hotDogs");
-app.use("/api/hotDogs", hotDogs);
 
 const port = process.env.PORT || 5000;
 

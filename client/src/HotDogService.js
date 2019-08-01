@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/api/hotDogs/";
+const url = "api/hotDogs/";
 
 export class HotDogService {
   //Get hot dogs list

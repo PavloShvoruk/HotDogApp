@@ -2,7 +2,7 @@
   <v-layout>
     <v-hover v-slot:default="{ hover }" close-delay="200">
       <v-card class="mx-auto card" max-width="800" :elevation="hover ? 16 : 2">
-        <v-img src="../../public/hot-dog.png" height="200px"></v-img>
+        <v-img src="../assets/hot-dog.png" height="200px"></v-img>
 
         <v-card-title>
           <v-layout align-start justify-start column fill-height>
