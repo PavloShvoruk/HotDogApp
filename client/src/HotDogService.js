@@ -35,9 +35,7 @@ export class HotDogService {
   }
   //Update
   static updateHotDog(id, body) {
-    return axios.put(`${url}${id}`, {
-      body
-    });
+    return axios.put(`${url}${id}`, body);
   }
 
   //Delete

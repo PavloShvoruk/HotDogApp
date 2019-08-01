@@ -3,10 +3,12 @@
     <v-layout align-center justify-center column fill-height>
       <v-flex v-for="(hotDog, index) in hotDogs" :key="index">
         <HotDogItem
+          :HotDogId="hotDog._id"
           :hotDogName="hotDog.name"
           :hotDogDescription="hotDog.description"
           :hotDogPrice="hotDog.price"
           :hotDogImage="hotDog.memo"
+          @outputData="updateList"
         ></HotDogItem>
       </v-flex>
     </v-layout>
@@ -30,15 +32,20 @@ export default {
   },
   watch: {
     submitted: async function() {
-      this.hotDogs = await HotDogService.getHotDogs();
+      await this.updateList();
+    }
+  },
+  methods: {
+    async updateList() {
+      try {
+        this.hotDogs = await HotDogService.getHotDogs();
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
   async created() {
-    try {
-      this.hotDogs = await HotDogService.getHotDogs();
-    } catch (error) {
-      console.log(error);
-    }
+    await this.updateList();
   }
 };
 </script>

@@ -28,7 +28,6 @@ app.use(express.json({ extended: false }));
 //     storage: storage
 // }).single('');
 
-//public folder
 //Handle prod
 if (process.env.NODE_ENV === "production") {
   //Static folder
