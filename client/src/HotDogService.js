@@ -2,8 +2,8 @@ import axios from "axios";
 
 const url = "http://localhost:5000/api/hotDogs/";
 
-export default class HotDogService {
-  //Get hot dos list
+export class HotDogService {
+  //Get hot dogs list
   static getHotDogs() {
     return new Promise(async (resolve, reject) => {
       try {
@@ -31,9 +31,7 @@ export default class HotDogService {
 
   //Create
   static createHotDog(body) {
-    return axios.post(`${url}/create`, {
-      body
-    });
+    return axios.post(`${url}/create`, body);
   }
   //Update
   static updateHotDog(id, body) {

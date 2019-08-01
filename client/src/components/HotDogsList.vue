@@ -1,26 +1,42 @@
 <template>
-  <div class="hello">
-    <h1>Hello World!</h1>
-  </div>
+  <v-container>
+    <v-layout align-center justify-center column fill-height>
+      <v-flex v-for="(hotDog, index) in hotDogs" :key="index">
+        <HotDogItem
+          :hotDogName="hotDog.name"
+          :hotDogDescription="hotDog.description"
+          :hotDogPrice="hotDog.price"
+          :hotDogImage="hotDog.memo"
+        ></HotDogItem>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import HotDogService from "../HotDogService";
+import HotDogItem from "./HotDogItem";
+import { HotDogService } from "../HotDogService.js";
 
 export default {
+  components: {
+    HotDogItem
+  },
   name: "HotDogsList",
+  props: ["submitted"],
   data() {
     return {
       hotDogs: []
     };
   },
+  watch: {
+    submitted: async function() {
+      this.hotDogs = await HotDogService.getHotDogs();
+    }
+  },
   async created() {
     try {
       this.hotDogs = await HotDogService.getHotDogs();
-      // eslint-disable-next-line
-      console.log(this.hotDogs);
     } catch (error) {
-      // eslint-disable-next-line
       console.log(error);
     }
   }

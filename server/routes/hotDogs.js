@@ -51,7 +51,7 @@ router.post("/create", (req, res) => {
       newHotDog
         .save()
         .then(hotdog => res.json(hotdog))
-        .catch(err => console.log(err));
+        .catch(() => res.status(500).json({ msg: "Unable to create hot dog" }));
     }
   });
 });

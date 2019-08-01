@@ -17,7 +17,7 @@ const hotDogSchema = new Schema({
   },
   memo: {
     type: String,
-    required: true
+    required: false
   }
 });
 
